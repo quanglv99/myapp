@@ -1,0 +1,16 @@
+{
+    "users": [
+      {
+        "username":"sa",
+        "password":"Admin@321"
+      },
+      {
+        "username":"quanglv",
+        "password":"13572468"
+      },
+      {
+        "username":"admin",
+        "password":"123456"
+      }
+    ]
+  }
