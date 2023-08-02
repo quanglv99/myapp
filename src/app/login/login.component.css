@@ -71,3 +71,11 @@ span.mat-checkbox-frame{
 ::ng-deep .mat-checkbox-frame{
     border-color: #fff !important;
 }
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-label {
+    color: #fff;
+    margin-left: 5px;
+    font-size: small;
+}
+::ng-deep .mat-form-field .mat-focused .mat-form-field-label {
+    color: #fff;
+}

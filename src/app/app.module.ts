@@ -14,13 +14,15 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import { ForgetComponent } from './forget/forget.component';
 import { FormsModule } from '@angular/forms';
-
+import { HttpClientModule } from '@angular/common/http';
+import { UserService } from './users.service';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    ForgetComponent
+    ForgetComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -32,11 +34,12 @@ import { FormsModule } from '@angular/forms';
     MatInputModule,
     MatIconModule,
     MatCardModule,
-    FormsModule
-
+    FormsModule,
+    HttpClientModule,
+    
 
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
