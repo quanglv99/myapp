@@ -23,10 +23,6 @@ export class LoginComponent implements OnInit {
     this.inputUsername.nativeElement.focus();
   }
   
-  visible:boolean = true;
-  viewPassword(){
-    this.visible = !this.visible
-  }
   onSubmit(){
     let isExistUser = userData.users.find(m => m.username == this.user.username && this.user.password);
     if(isExistUser != undefined){
