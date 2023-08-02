@@ -20,7 +20,7 @@
                     <mat-label style="color: #fff;
                     margin-left: 5px;
                     font-size: small;">Password</mat-label>
-                    <input [(ngModel)]="user.password" #inputpPass name="second" matInput [type]="hide ? 'password' : 'text'" (keydown.enter)="onSubmit()">
+                    <input [(ngModel)]="user.password" #inputPass name="second" matInput [type]="hide ? 'password' : 'text'" (keydown.enter)="onSubmit()">
                     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                       <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </button>
