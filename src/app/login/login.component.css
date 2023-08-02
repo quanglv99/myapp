@@ -76,6 +76,9 @@ span.mat-checkbox-frame{
     margin-left: 5px;
     font-size: small;
 }
-::ng-deep .mat-form-field .mat-focused .mat-form-field-label {
+::ng-deep.mat-form-field.mat-focused .mat-form-field-label {
     color: #fff;
+}
+::ng-deep input.mat-input-element {
+    margin-left:5px;
 }
