@@ -1,8 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from '../users.service';
-import { IUser } from '../user';
+import { UserService } from '../share/users.service';
+import { IUser } from '../share/user';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

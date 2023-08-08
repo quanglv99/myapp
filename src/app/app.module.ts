@@ -15,7 +15,7 @@ import {MatCardModule} from '@angular/material/card';
 import { ForgetComponent } from './forget/forget.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { UserService } from './users.service';
+import { UserService } from './share/users.service';
 @NgModule({
   declarations: [
     AppComponent,
