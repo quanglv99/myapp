@@ -13,7 +13,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import { ForgetComponent } from './forget/forget.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './share/users.service';
 @NgModule({
@@ -36,8 +36,8 @@ import { UserService } from './share/users.service';
     MatCardModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
     
-
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

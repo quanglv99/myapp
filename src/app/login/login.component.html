@@ -1,35 +1,36 @@
-
 <mat-card>
-    <div class="card-image" style="display: flex; justify-content: center;padding-top: 20px;">
-        <img  src="assets/image.png" class="card-img" />
+    <div class="card-image" style="display: flex; justify-content: center; padding-top: 20px;">
+      <img src="assets/image.png" class="card-img" />
     </div>
     <mat-card-title>LOG IN</mat-card-title>
     <mat-card-content>
-        <form name="loginForm">
-            <p>
-                <mat-form-field>
-                    <mat-label>Username</mat-label>
-                    <mat-icon matPrefix>account_circle</mat-icon>
-                    <input [(ngModel)]="user.username" #inputUsername name="first" type="text" matInput>
-                </mat-form-field>
-            </p>
-             <p>
-                <mat-form-field>
-                    <mat-icon matPrefix>lock_outline</mat-icon>
-                    <mat-label>Password</mat-label>
-                    <input [(ngModel)]="user.password" #inputPass name="second" matInput [type]="hide ? 'password' : 'text'" (keydown.enter)="onSubmit()">
-                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    </button>
-                  </mat-form-field>
-             </p>
-             <p>
-                <mat-checkbox><span style="margin-top: 2px; font-size: small;color: #fff;">Remember me</span></mat-checkbox>
-             </p>
-                <div class="button">
-                    <button type="submit" mat-button (click)="onSubmit()">Login</button>
-                </div>
-        </form>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <p>
+          <mat-form-field>
+            <mat-label>Username</mat-label>
+            <mat-icon matPrefix>account_circle</mat-icon>
+            <input #inputUsername formControlName="username" type="text" matInput>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <mat-icon matPrefix>lock_outline</mat-icon>
+            <mat-label>Password</mat-label>
+            <input formControlName="password" matInput [type]="hide ? 'password' : 'text'" (keydown.enter)="onSubmit()">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-checkbox formControlName="rememberMe">
+            <span style="margin-top: 2px; font-size: small; color: #fff;">Remember me</span>
+          </mat-checkbox>
+        </p>
+        <div class="button">
+          <button type="submit" mat-button [disabled]="loginForm.invalid">Login</button>
+        </div>
+      </form>
     </mat-card-content>
     <mat-card-footer [routerLink]="'/forget'"><a class="forget-pass">Forget Password?</a></mat-card-footer>
-</mat-card>
+  </mat-card>
