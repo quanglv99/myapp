@@ -82,3 +82,14 @@ span.mat-checkbox-frame{
 ::ng-deep input.mat-input-element {
     margin-left:5px;
 }
+
+::ng-deep .mat-checkbox-layout .mat-checkbox-label {
+    margin-top: 2px; 
+    font-size: small;
+     color: #fff;
+}
+::ng-deep .card-image{
+   display: flex;
+   justify-content: center;
+    padding-top: 20px;
+}
