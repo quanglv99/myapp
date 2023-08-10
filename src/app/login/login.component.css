@@ -1,95 +1,95 @@
-:host{
-    display: flex;
-    justify-content: center;
-    margin: 100px 0px;
-    
+:host {
+  display: flex;
+  justify-content: center;
+  margin: 100px 0px;
 }
 
-mat-card{
-    background:linear-gradient(#647DEE,#9921E8);
-    height: 500px;
-    width: 400px;
+mat-card {
+  background: linear-gradient(#647dee, #9921e8);
+  height: 500px;
+  width: 400px;
 }
-.mat-form-field{
-    width: 100%;
-    min-width: 350px;
-    color: #ffff;
-}
-
-.card-img{
-    width: 40px;
-    height: 40px;
-    border: 20px solid #ffff;
-    border-radius: 50%;
-    background-color: white;
+.mat-form-field {
+  width: 100%;
+  min-width: 350px;
+  color: #ffff;
 }
 
-
-mat-card-title,mat-card-content,mat-card-footer{
-    display: flex;
-    justify-content: center;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+.card-img {
+  width: 40px;
+  height: 40px;
+  border: 20px solid #ffff;
+  border-radius: 50%;
+  background-color: white;
 }
 
-.mat-checkbox-label{
-    font-size: small;
+mat-card-title,
+mat-card-content,
+mat-card-footer {
+  display: flex;
+  justify-content: center;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-checkbox-label {
+  font-size: small;
 }
 
 .mat-input-element {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
 }
-.mat-card-content{
-    padding-top:30px ;
+.mat-card-content {
+  padding-top: 30px;
 }
-.mat-card-footer{
-    padding-top: 10px;
-   font-size: small;
+.mat-card-footer {
+  padding-top: 10px;
+  font-size: small;
 }
-.mat-card-title{
-    padding-top: 30px;
-    color: #ffff;
+.mat-card-title {
+  padding-top: 30px;
+  color: #ffff;
 }
-.button{
-    color: #000;
-    display: flex;
-    justify-content: center;
-    padding-top: 20px;
+.button {
+  color: #000;
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
 }
-.mat-button{
-    background: #ffff;
-    width: 30%;
+.mat-button {
+  background: #ffff;
+  width: 30%;
 }
 a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
-span.mat-checkbox-frame{
-    border-color: #fff;
+span.mat-checkbox-frame {
+  border-color: #fff;
 }
-.forget-pass{
-    color: #fff;
+.forget-pass {
+  color: #fff;
 }
-::ng-deep .mat-checkbox-frame{
-    border-color: #fff !important;
+::ng-deep .mat-checkbox-frame {
+  border-color: #fff !important;
 }
 ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-label {
-    color: #fff;
-    margin-left: 5px;
-    font-size: small;
+  color: #fff;
+  margin-left: 5px;
+  font-size: small;
 }
 ::ng-deep.mat-form-field.mat-focused .mat-form-field-label {
-    color: #fff;
+  color: #fff;
 }
 ::ng-deep input.mat-input-element {
-    margin-left:5px;
+  margin-left: 5px;
 }
 
 ::ng-deep .mat-checkbox-layout .mat-checkbox-label {
-    margin-top: 2px; 
-    font-size: small;
-     color: #fff;
+  margin-top: 2px;
+  font-size: small;
+  color: #fff;
 }
-::ng-deep .card-image{
-   display: flex;
-   justify-content: center;
-    padding-top: 20px;
+::ng-deep .card-image {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
 }
