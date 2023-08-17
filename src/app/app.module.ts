@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,7 +14,7 @@ import { MatCardModule } from '@angular/material/card';
 import { ForgetComponent } from './forget/forget.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { UserService } from './shared/services/users.service';
+import { AppConfigService, initializerConfigFn } from './shared/services/app.service';
 @NgModule({
   declarations: [AppComponent, LoginComponent, HomeComponent, ForgetComponent],
   imports: [
@@ -31,7 +31,17 @@ import { UserService } from './shared/services/users.service';
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [UserService],
+  providers: [AppConfigService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializerConfigFn,
+      multi: true,
+      deps: [AppConfigService],
+    },
+  ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+
+  
+}

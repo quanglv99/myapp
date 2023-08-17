@@ -1,3 +1,4 @@
+
 :host {
   display: flex;
   justify-content: center;
@@ -50,15 +51,23 @@ mat-card-footer {
   color: #ffff;
 }
 .button {
-  color: #000;
   display: flex;
   justify-content: center;
-  padding-top: 20px;
 }
-.mat-button {
-  background: #ffff;
-  width: 30%;
+.button button
+{
+  font-weight: bold;
+  color: black;
+  border-radius: 2rem;
+  width: 100px;
+  height: 42px;
+  border: none;
+  background-color:#fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 a:hover {
   text-decoration: underline;
 }
@@ -66,6 +75,7 @@ span.mat-checkbox-frame {
   border-color: #fff;
 }
 .forget-pass {
+  padding-top:2rem;
   color: #fff;
 }
 ::ng-deep .mat-checkbox-frame {

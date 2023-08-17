@@ -1,15 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IUser } from '../models/user.interface';
-import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class UserService {
+export class AppConfigService {
   private appConfig: any;
   constructor(private http: HttpClient) {}
 
-  //chuyen doi data
   loadConfig() {
     return this.http
       .get('/assets/config.json')
@@ -18,8 +15,14 @@ export class UserService {
         this.appConfig = data;
       });
   }
-
-  getData(): Observable<IUser[]> {
-    return this.http.get<IUser[]>(this.appConfig.API_URL);
+  getUrl():string{
+    return this.appConfig.API_URL
   }
+
+}
+
+export function initializerConfigFn(appConfigService: AppConfigService) {
+  return () => {
+    return appConfigService.loadConfig();
+  };
 }
