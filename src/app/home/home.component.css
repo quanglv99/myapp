@@ -7,13 +7,14 @@ body {
 
 .header {
   overflow: hidden;
-  background-color: #f1f1f1;
+  background-color: #575555;
   padding: 20px 10px;
+  
 }
 
 .header a {
   float: left;
-  color: black;
+  color: white;
   text-align: center;
   padding: 12px;
   text-decoration: none;
@@ -22,9 +23,14 @@ body {
   border-radius: 4px;
 }
 
-.header a.logo {
+.header a.tab-home {
   font-size: 25px;
   font-weight: bold;
+  
+}
+
+.header a.tab-home:hover{
+  color: #e03327b4;
 }
 
 .header a:hover {
@@ -51,4 +57,45 @@ body {
   .header-right {
     float: none;
   }
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+td {
+  padding: 8px;
+  text-align: center;
+}
+
+th
+{
+  padding: 8px;
+  text-align: center;
+  color: white;
+  background-color: #575555;
+}
+
+th:nth-child(2), td:nth-child(2) {
+  text-align: left;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+.content{
+  background-color: #f1f1f1;
+}
+.table{
+  padding: 20px 20px;
+}
+
+.pagination{
+  
+  padding: 10px 10px;
+  
 }

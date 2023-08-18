@@ -14,7 +14,15 @@ import { MatCardModule } from '@angular/material/card';
 import { ForgetComponent } from './forget/forget.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AppConfigService, initializerConfigFn } from './shared/services/app.service';
+import { AppConfigService } from './shared/services/app.service';
+import { NgxPaginationModule } from 'ngx-pagination';
+
+const initializerConfigFn = (appConfigService: AppConfigService) =>{
+  return () => {
+    return appConfigService.loadConfig();
+  };
+}
+
 @NgModule({
   declarations: [AppComponent, LoginComponent, HomeComponent, ForgetComponent],
   imports: [
@@ -30,8 +38,9 @@ import { AppConfigService, initializerConfigFn } from './shared/services/app.ser
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
   ],
-  providers: [AppConfigService,
+  providers: [
     {
       provide: APP_INITIALIZER,
       useFactory: initializerConfigFn,
@@ -43,5 +52,4 @@ import { AppConfigService, initializerConfigFn } from './shared/services/app.ser
 })
 export class AppModule {
 
-  
 }

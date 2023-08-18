@@ -18,11 +18,9 @@ export class AppConfigService {
   getUrl():string{
     return this.appConfig.API_URL
   }
+  getHomeUrl():string{
+    return this.appConfig.HOME_URL
+  }
 
 }
 
-export function initializerConfigFn(appConfigService: AppConfigService) {
-  return () => {
-    return appConfigService.loadConfig();
-  };
-}
