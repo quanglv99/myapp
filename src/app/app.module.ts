@@ -16,6 +16,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppConfigService } from './shared/services/app.service';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { AuthService } from './shared/services/auth.service';
+import { AuthGuard } from './auth.guard';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const initializerConfigFn = (appConfigService: AppConfigService) =>{
   return () => {
@@ -24,7 +28,7 @@ const initializerConfigFn = (appConfigService: AppConfigService) =>{
 }
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, HomeComponent, ForgetComponent],
+  declarations: [AppComponent, LoginComponent, HomeComponent, ForgetComponent, ConfirmationDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -39,14 +43,18 @@ const initializerConfigFn = (appConfigService: AppConfigService) =>{
     HttpClientModule,
     ReactiveFormsModule,
     NgxPaginationModule,
+    MatDialogModule,
   ],
   providers: [
+    AuthService,
+    AuthGuard,
     {
       provide: APP_INITIALIZER,
       useFactory: initializerConfigFn,
       multi: true,
       deps: [AppConfigService],
     },
+    
   ],
   bootstrap: [AppComponent],
 })

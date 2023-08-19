@@ -7,14 +7,14 @@ body {
 
 .header {
   overflow: hidden;
-  background-color: #575555;
+  background-color: #fff;
   padding: 20px 10px;
   
 }
 
 .header a {
   float: left;
-  color: white;
+  color: black;
   text-align: center;
   padding: 12px;
   text-decoration: none;
@@ -85,13 +85,18 @@ th:nth-child(2), td:nth-child(2) {
 }
 
 tr:nth-child(even) {
-  background-color: #dddddd;
+  background-color: white;
 }
 .content{
-  background-color: #f1f1f1;
+  background-color: #E2E2E2;
 }
 .table{
   padding: 20px 20px;
+}
+
+.table-shadow
+{
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .pagination{

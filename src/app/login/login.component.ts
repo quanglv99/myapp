@@ -1,9 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AppConfigService } from '../shared/services/app.service';
 import { IUser } from '../shared/models/user.interface';
-import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../shared/services/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,8 +16,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private http: HttpClient,
-    private appConfig: AppConfigService
+    private authService: AuthService
   ) {}
   loginForm!: FormGroup;
   ngOnInit(): void {
@@ -40,15 +38,6 @@ export class LoginComponent implements OnInit {
       this.inputUsername.nativeElement.focus();
     }
 
-    const apiUrl = this.appConfig.getUrl();
-    this.http.get(apiUrl).subscribe(
-      (userData: any) => {
-        this.data = userData;
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
   }
 
   togglePasswordVisibility() {
@@ -60,10 +49,8 @@ export class LoginComponent implements OnInit {
       const username = this.loginForm.value.username;
       const password = this.loginForm.value.password;
       const rememberMe = this.loginForm.value.rememberMe;
-      let isExistUser = this.data.find(
-        (m) => m.username == username && m.password == password
-      );
-      if (isExistUser != undefined) {
+      if (this.authService.login(username, password)) 
+      {
         if (rememberMe) {
           localStorage.setItem('rememberUsername', username);
           localStorage.setItem('rememberPassword', password);
@@ -72,7 +59,8 @@ export class LoginComponent implements OnInit {
           localStorage.removeItem('rememberPassword');
         }
         this.router.navigate(['/home']);
-      } else {
+      }else
+      {
         alert('Login Failed: Username or password incorrect');
       }
     }
