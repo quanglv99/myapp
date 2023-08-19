@@ -34,7 +34,8 @@ export class HomeComponent implements OnInit {
   onSignout(){
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       width: '300px',
-      data: { message: 'Are you sure you want to sign out?' }
+      data: { message: 'Are you sure you want to sign out?',
+              showYesNo: true }
     });
 
     dialogRef.afterClosed().subscribe(result => {

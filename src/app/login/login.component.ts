@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IUser } from '../shared/models/user.interface';
 import { AuthService } from '../shared/services/auth.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,7 +18,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private dialog:MatDialog
   ) {}
   loginForm!: FormGroup;
   ngOnInit(): void {
@@ -61,7 +64,11 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/home']);
       }else
       {
-        alert('Login Failed: Username or password incorrect');
+        const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+          width: '300px',
+          data: { message: 'invalid username or password!',
+                  showYesNo: false }
+        });
       }
     }
   }
