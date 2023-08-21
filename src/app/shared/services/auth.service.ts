@@ -4,17 +4,14 @@ import { AppConfigService } from './app.service';
 import { IUser } from '../models/user.interface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   private isAuthenticated = false;
-  private data: IUser[] = []; 
+  private data: IUser[] = [];
 
-  constructor(
-    private http: HttpClient,
-    private appConfig: AppConfigService
-  ) {
-    this.loadData(); 
+  constructor(private http: HttpClient, private appConfig: AppConfigService) {
+    this.loadData();
   }
 
   private loadData() {
@@ -47,7 +44,7 @@ export class AuthService {
   getIsAuthenticated(): boolean {
     return this.isAuthenticated;
   }
-  isRememberedMe():boolean{
+  isRememberedMe(): boolean {
     return localStorage.getItem('rememberUsername') !== null;
   }
 }
