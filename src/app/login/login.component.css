@@ -109,3 +109,7 @@ span.mat-checkbox-frame {
   justify-content: center;
   padding-top: 20px;
 }
+
+::ng-deep .mat-form-field-invalid mat-label.mat-required::before {
+  content: none;
+}
