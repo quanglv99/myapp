@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   searchText: string = '';
   filterData: TableUser[] = [];
   isSearchActive: boolean = false;
+  activeTab:string='home';
   constructor(
     private router: Router,
     private appConfig: AppConfigService,
@@ -75,6 +76,45 @@ export class HomeComponent implements OnInit {
 
       this.isSearchActive = false;
     }
+  }
+
+  openNav(){
+    const mySidenav = document.getElementById('mySidenav');
+  if (mySidenav) {
+    mySidenav.style.width = "250px";
+  }
+  
+  const tableElement = document.getElementById('panel');
+  if (tableElement) {
+    tableElement.style.marginLeft = "250px";
+  }
+  }
+  closeNav(){
+    const mySidenav = document.getElementById('mySidenav');
+  if (mySidenav) {
+    mySidenav.style.width = "0";
+  }
+  
+  const tableElement = document.getElementById('panel');
+  if (tableElement) {
+    tableElement.style.marginLeft = "0";
+  }
+  }
+
+  title:string='Home';
+
+  switchTab(tabName:string){
+    this.activeTab = tabName;
+    if (tabName === 'table') {
+      this.title = 'Table';
+    } else if (tabName === 'system') {
+      this.title = 'System';
+    } else if (tabName === 'contact') {
+      this.title = 'Contact';
+    }else{
+      this.title = 'Home'
+    }
+    this.closeNav();
   }
 
   onPageChange(pageNumber: number): void {
