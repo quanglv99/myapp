@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppConfigService } from '../shared/services/app.service';
 import { HttpClient } from '@angular/common/http';
@@ -6,38 +6,51 @@ import { TableUser } from '../shared/models/tableUser.interface';
 import { AuthService } from '../shared/services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatTableDataSource} from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements OnInit {
-  data: TableUser[] = [];
-  currentPage = 1; // Current page number
-  totalItems = 0;
-  searchText: string = '';
-  filterData: TableUser[] = [];
-  isSearchActive: boolean = false;
+export class HomeComponent implements OnInit{
+  @ViewChild(MatPaginator) paginator !: MatPaginator;
+  @ViewChild(MatSort) sort !: MatSort;
+  data: any;
   activeTab:string='home';
+  title:string='Home';
+  displayedColumns: string[] = ['id', 'name', 'avatar', 'createdAt'];
+  dataSource: any;
   constructor(
     private router: Router,
     private appConfig: AppConfigService,
     private http: HttpClient,
     private authService: AuthService,
-    private dialog: MatDialog
-  ) {}
+    private dialog: MatDialog,
+  ) {
+   
+  }
+  getDataTable(){
+    const url = this.appConfig.getHomeUrl();
+    this.http.get(url).subscribe((result)=>{
+      this.data = result;
+
+      this.dataSource = new MatTableDataSource<TableUser>(this.data);
+      this.dataSource.paginator = this.paginator
+      this.dataSource.sort = this.sort
+    })
+  }
 
   ngOnInit(): void {
-    const url = this.appConfig.getHomeUrl();
-    this.http.get(url).subscribe(
-      (arrData: any) => {
-        this.data = arrData;
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    this.getDataTable();
   }
+
+  Filterchange(event: Event) {
+    const filvalue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filvalue;
+  }
+
   onSignout() {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       width: '300px',
@@ -54,55 +67,6 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  applySearch() {
-    if (this.searchText) {
-      const input = this.searchText.toLowerCase();
-
-      this.filterData = this.data.filter((item) =>
-        item.name.toLowerCase().includes(input)
-      );
-
-      this.totalItems = this.filterData.length;
-
-      this.currentPage = 1;
-
-      this.isSearchActive = true;
-    } else {
-      this.filterData = this.data;
-
-      this.totalItems = this.data.length;
-
-      this.currentPage = 1;
-
-      this.isSearchActive = false;
-    }
-  }
-
-  openNav(){
-    const mySidenav = document.getElementById('mySidenav');
-  if (mySidenav) {
-    mySidenav.style.width = "250px";
-  }
-  
-  const tableElement = document.getElementById('panel');
-  if (tableElement) {
-    tableElement.style.marginLeft = "250px";
-  }
-  }
-  closeNav(){
-    const mySidenav = document.getElementById('mySidenav');
-  if (mySidenav) {
-    mySidenav.style.width = "0";
-  }
-  
-  const tableElement = document.getElementById('panel');
-  if (tableElement) {
-    tableElement.style.marginLeft = "0";
-  }
-  }
-
-  title:string='Home';
-
   switchTab(tabName:string){
     this.activeTab = tabName;
     if (tabName === 'table') {
@@ -114,10 +78,6 @@ export class HomeComponent implements OnInit {
     }else{
       this.title = 'Home'
     }
-    this.closeNav();
   }
 
-  onPageChange(pageNumber: number): void {
-    this.currentPage = pageNumber;
-  }
 }

@@ -15,11 +15,16 @@ import { ForgetComponent } from './forget/forget.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppConfigService } from './shared/services/app.service';
-import { NgxPaginationModule } from 'ngx-pagination';
 import { AuthService } from './shared/services/auth.service';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AuthGuard } from './shared/auth/auth.guard';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
 
 const initializerConfigFn = (appConfigService: AppConfigService) =>{
   return () => {
@@ -42,12 +47,19 @@ const initializerConfigFn = (appConfigService: AppConfigService) =>{
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgxPaginationModule,
     MatDialogModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+
   ],
   providers: [
     AuthService,
     AuthGuard,
+    
     {
       provide: APP_INITIALIZER,
       useFactory: initializerConfigFn,
