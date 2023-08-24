@@ -1,10 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IUser } from '../shared/models/user.interface';
-import { AuthService } from '../shared/services/auth.service';
+import { IUser } from '../../data/models/user.interface';
+import { AuthService } from '../../core/service/auth.service';
 import { MatDialog } from '@angular/material/dialog';
-import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+import { ConfirmationDialogComponent } from '../../shared/components/confirmation-dialog/confirmation-dialog.component';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

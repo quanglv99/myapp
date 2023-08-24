@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppConfigService } from '../shared/services/app.service';
+import { AppConfigService } from '../../shared/services/app.service';
 import { HttpClient } from '@angular/common/http';
-import { TableUser } from '../shared/models/tableUser.interface';
-import { AuthService } from '../shared/services/auth.service';
+import { TableUser } from '../../data/models/tableUser.interface';
+import { AuthService } from '../../core/service/auth.service';
 import { MatDialog } from '@angular/material/dialog';
-import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+import { ConfirmationDialogComponent } from '../../shared/components/confirmation-dialog/confirmation-dialog.component';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
