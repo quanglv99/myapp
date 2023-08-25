@@ -3,98 +3,53 @@
     <button mat-icon-button (click)="sidenav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-    <h1>{{title}}</h1>
+    <h1>{{ title }}</h1>
     <div class="spacer"></div>
-    <a mat-button>My works</a>
-    <a mat-button>Blueprint</a>
+    <a mat-button>IPS-Smart Client</a>
+    <a mat-button>IPS-Smart Query</a>
     <a mat-button (click)="onSignout()">Sign out</a>
-    
   </mat-toolbar-row>
 </mat-toolbar>
-  <mat-sidenav-container>
-    <mat-sidenav #sidenav mode="over" (click)="sidenav.close()">
-      <mat-nav-list>
-        <mat-list-item>
-          <button mat-button (click)="switchTab('home')"><mat-icon>home</mat-icon>Home</button>
-        </mat-list-item>
-        <mat-list-item>
-          <button mat-button (click)="switchTab('table')"><mat-icon>table</mat-icon>Table</button>
-        </mat-list-item>
-        <mat-list-item>
-          <button mat-button (click)="switchTab('system')"><mat-icon>settings</mat-icon>System</button>
-        </mat-list-item>
-        <mat-list-item>
-          <button mat-button (click)="switchTab('contact')"><mat-icon>contacts</mat-icon>Contact</button>
-        </mat-list-item>
-      </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <div class="body">
-        <div id="tab-home" class="tab-home" [class.active]="activeTab === 'home'">
-          <div class="card-container">
-            <div class="card">
-              <h2>Home module will coming soon</h2>
-            </div>
-          </div>
-        </div>
-        <div id="tab-table" class="tab-table" [class.active]="activeTab === 'table'">
-          <div class="search-container">
-            <input
-              class="input"
-              type="text"
-              placeholder="Filter"
-              (keyup)="Filterchange($event)"
-            />
-          </div>
-          <div class="table-container">
-            <table
-              mat-table matSort
-              [dataSource]="dataSource" class="mat-elevation-z8"
-            >
-              <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header >ID</th>
-                <td mat-cell *matCellDef="let element">{{ element.id }}</td>
-              </ng-container>
-              <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-                <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-              </ng-container>
-    
-              <ng-container matColumnDef="avatar">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Avatar</th>
-                <td mat-cell *matCellDef="let element">
-                  <img [src]="element.avatar" alt="Avatar" />
-                </td>
-              </ng-container>
-    
-              <ng-container matColumnDef="createdAt">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Create At</th>
-                <td mat-cell *matCellDef="let element">{{ element.createdAt | date }}</td>
-              </ng-container>
-              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-              <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-            </table>
-            <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-                     showFirstLastButtons
-                     aria-label="Select page of periodic elements">
-      </mat-paginator>
-          </div>
-        </div>
-        <div id="tab-system" class="tab-system" [class.active]="activeTab === 'system'">
-          <div class="card-container">
-            <div class="card">
-              <h2>System module will coming soon</h2>
-            </div>
-          </div>
-        </div>
-        <div id="tab-contact" class="tab-contact" [class.active]="activeTab === 'contact'">
-          <div class="card-container">
-            <div class="card">
-              <h2>Contact module will coming soon</h2>
-            </div>
-          </div>
-        </div>
-      </div>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-  
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="over" (click)="sidenav.close()">
+    <mat-nav-list>
+      <mat-list-item>
+        <button mat-button routerLink="/home/home-tab" routerLinkActive="active">
+          <mat-icon>home</mat-icon>Home
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button routerLink="/home/table-tab" routerLinkActive="active">
+          <mat-icon>table</mat-icon>Table
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button routerLink="/home/system-tab" routerLinkActive="active" >
+          <mat-icon>settings</mat-icon>System
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button routerLink="/home/contact-tab" routerLinkActive="active">
+          <mat-icon>contacts</mat-icon>Contact
+        </button>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="body">
+        <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<ng-template #tab1>
+  <app-home-tab-component></app-home-tab-component>
+</ng-template>
+<ng-template #tab2>
+  <app-table-tab-component></app-table-tab-component>
+</ng-template>
+<ng-template #tab3>
+  <app-system-tab-component></app-system-tab-component>
+</ng-template>
+<ng-template #tab4>
+  <app-contact-tab-component></app-contact-tab-component>
+</ng-template>

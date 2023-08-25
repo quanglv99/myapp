@@ -19,12 +19,6 @@ import { AuthService } from './core/service/auth.service';
 import { ConfirmationDialogComponent } from './shared/components/confirmation-dialog/confirmation-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AuthGuard } from './core/guard/auth.guard';
-import {MatTableModule} from '@angular/material/table';
-import {MatPaginatorModule } from '@angular/material/paginator';
-import { MatSortModule } from '@angular/material/sort';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatListModule} from '@angular/material/list';
 
 const initializerConfigFn = (appConfigService: AppConfigService) =>{
   return () => {
@@ -33,7 +27,7 @@ const initializerConfigFn = (appConfigService: AppConfigService) =>{
 }
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, HomeComponent, ForgetComponent, ConfirmationDialogComponent],
+  declarations: [AppComponent, LoginComponent, ForgetComponent, ConfirmationDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -48,12 +42,6 @@ const initializerConfigFn = (appConfigService: AppConfigService) =>{
     HttpClientModule,
     ReactiveFormsModule,
     MatDialogModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatListModule,
 
   ],
   providers: [
