@@ -14,8 +14,8 @@
   <mat-sidenav #sidenav mode="over" (click)="sidenav.close()">
     <mat-nav-list>
       <mat-list-item>
-        <button mat-button routerLink="/home/home-tab" routerLinkActive="active">
-          <mat-icon>home</mat-icon>Home
+        <button mat-button routerLink="/home/dashboard-tab" routerLinkActive="active">
+          <mat-icon>home</mat-icon>Dashboard
         </button>
       </mat-list-item>
       <mat-list-item>
@@ -24,13 +24,13 @@
         </button>
       </mat-list-item>
       <mat-list-item>
-        <button mat-button routerLink="/home/system-tab" routerLinkActive="active" >
-          <mat-icon>settings</mat-icon>System
+        <button mat-button routerLink="/home/report-tab" routerLinkActive="active" >
+          <mat-icon>contacts</mat-icon>Report
         </button>
       </mat-list-item>
       <mat-list-item>
-        <button mat-button routerLink="/home/contact-tab" routerLinkActive="active">
-          <mat-icon>contacts</mat-icon>Contact
+        <button mat-button routerLink="/home/log-tab" routerLinkActive="active">
+          <mat-icon>settings</mat-icon>Log
         </button>
       </mat-list-item>
     </mat-nav-list>
@@ -42,14 +42,14 @@
   </mat-sidenav-content>
 </mat-sidenav-container>
 <ng-template #tab1>
-  <app-home-tab-component></app-home-tab-component>
+ <app-dashboard></app-dashboard>
 </ng-template>
 <ng-template #tab2>
-  <app-table-tab-component></app-table-tab-component>
+  <app-table></app-table>
 </ng-template>
 <ng-template #tab3>
-  <app-system-tab-component></app-system-tab-component>
+  <app-report></app-report>
 </ng-template>
 <ng-template #tab4>
-  <app-contact-tab-component></app-contact-tab-component>
+  <app-log></app-log>
 </ng-template>

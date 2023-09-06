@@ -1,27 +1,21 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { AuthService } from '../../core/service/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from '../../shared/components/confirmation-dialog/confirmation-dialog.component';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-  data: any;
-  activeTab: string = 'home';
-  title: string = 'Home';
-  displayedColumns: string[] = ['id', 'name', 'avatar', 'createdAt'];
-  dataSource: any;
+  activeTab: string = 'dashboard-tab';
+  title: string = 'Menu';
   constructor(
     private router: Router,
     private authService: AuthService,
     private dialog: MatDialog,
+    private activatedRoute: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {
@@ -40,20 +34,20 @@ export class HomeComponent implements OnInit {
 
   private updateTitle(activeTab: string): void {
     switch (activeTab) {
-      case 'home-tab':
-        this.title = 'Home';
+      case 'dashboard-tab':
+        this.title = 'Dashboard';
         break;
       case 'table-tab':
         this.title = 'Table';
         break;
-      case 'system-tab':
-        this.title = 'System';
+      case 'report-tab':
+        this.title = 'Report';
         break;
-      case 'contact-tab':
-        this.title = 'Contact';
+      case 'log-tab':
+        this.title = 'Log';
         break;
       default:
-        this.title = 'Home';
+        this.title = 'Menu'
     }
   }
 

@@ -7,15 +7,15 @@ import { TableUser } from 'src/app/data/models/tableUser.interface';
 import { AppConfigService } from 'src/app/shared/services/app.service';
 
 @Component({
-  selector: 'app-table-tab-component',
-  templateUrl: './table-tab-component.component.html',
-  styleUrls: ['./table-tab-component.component.css'],
+  selector: 'app-table',
+  templateUrl: './table.component.html',
+  styleUrls: ['./table.component.css']
 })
-export class TableTabComponent implements OnInit {
+export class TableComponent implements OnInit {
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   data: any;
-  title: string = 'Home';
   displayedColumns: string[] = ['id', 'name', 'avatar', 'createdAt'];
   dataSource: any;
 

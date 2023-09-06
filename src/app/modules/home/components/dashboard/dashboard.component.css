@@ -1,0 +1,27 @@
+.chartContainer
+{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 20px;
+}
+
+.pie-chart
+{
+  height: 350px;
+  width: 30%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.line-chart
+{
+  margin-left: 20px;
+  height: 350px;
+  width: 70%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#chart {
+  max-width: 100%;
+  margin: 0 10px 0 10px;
+}
