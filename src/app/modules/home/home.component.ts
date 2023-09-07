@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
     const parts = url.split('/');
     return parts[parts.length - 1];
   }
-
+  
   private updateTitle(activeTab: string): void {
     switch (activeTab) {
       case 'dashboard-tab':

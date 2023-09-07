@@ -21,6 +21,9 @@ export class AppConfigService {
   getHomeUrl():string{
     return this.appConfig.HOME_URL
   }
+  getDashboardUrl():string{
+    return this.appConfig.DASHBOARD_URL
+  }
 
 }
 

@@ -1,41 +1,33 @@
 <div class="chartContainer">
   <div class="pie-chart">
-    <apx-chart
-    [chart]="donutChartOption.chart"
-    [series]="donutChartOption.series"
-    [labels]="donutChartOption.labels"
-    [legend]="donutChartOption.legend"
-    [responsive]="donutChartOption.responsive"
-    [colors]="donutChartOption.color"
-     >
-    </apx-chart>
+    <div id="donut-chart">
+      <apx-chart
+        [chart]="donutChartOption.chart!"
+        [series]="donutChartOption.series!"
+        [labels]="donutChartOption.labels!"
+        [legend]="donutChartOption.legend!"
+        [responsive]="donutChartOption.responsive!"
+        [colors]="donutChartOption.colors!"
+        [plotOptions]="donutChartOption.plotOptions!"
+      >
+      </apx-chart>
+    </div>
   </div>
   <div class="line-chart">
     <div id="chart">
       <apx-chart
-        [series]="chartOptions.series"
-        [chart]="chartOptions.chart"
-        [xaxis]="chartOptions.xaxis"
-        [dataLabels]="chartOptions.dataLabels"
-        [grid]="chartOptions.grid"
-        [stroke]="chartOptions.stroke"
-        [title]="chartOptions.title"
-        [responsive]="chartOptions.responsive"
+        [series]="chartOptions.series!"
+        [chart]="chartOptions.chart!"
+        [xaxis]="chartOptions.xaxis!"
+        [dataLabels]="chartOptions.dataLabels!"
+        [grid]="chartOptions.grid!"
+        [stroke]="chartOptions.stroke!"
+        [title]="chartOptions.title!"
+        [responsive]="chartOptions.responsive!"
       ></apx-chart>
     </div>
   </div>
-
 </div>
 <div class="chartContainer">
-  <div class="pie-chart">
-    <apx-chart 
-    [chart]="pieChartOption.chart"
-    [series]="pieChartOption.series"
-    [labels]="pieChartOption.labels"
-    [legend]="pieChartOption.legend"
-    [responsive]="pieChartOption.responsive"
-    [colors]="pieChartOption.color">
-
-    </apx-chart>
-  </div>
+  <div class="pie-chart"></div>
 </div>

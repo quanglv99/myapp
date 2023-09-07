@@ -1,27 +1,45 @@
-.chartContainer
-{
+/* Base styles for your card and chart */
+.chartContainer {
   display: flex;
   justify-content: start;
   align-items: center;
   padding: 20px;
 }
 
-.pie-chart
-{
+.pie-chart {
+  flex: 1; /* Allow the chart to grow and shrink */
   height: 350px;
-  width: 30%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
 }
 
-.line-chart
-{
+.line-chart {
+  flex: 2; /* Allow the chart to grow and shrink */
   margin-left: 20px;
   height: 350px;
-  width: 70%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
 }
 
 #chart {
   max-width: 100%;
   margin: 0 10px 0 10px;
 }
+
+#donut-chart {
+  margin: 10px 10px 0 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .chartContainer {
+    flex-direction: column;
+  }
+
+  .pie-chart,
+  .line-chart {
+    flex: 1; 
+    margin: 10px 0; 
+  }
+}
+
+

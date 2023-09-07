@@ -13,25 +13,21 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav mode="over" (click)="sidenav.close()">
     <mat-nav-list>
-      <mat-list-item>
-        <button mat-button routerLink="/home/dashboard-tab" routerLinkActive="active">
-          <mat-icon>home</mat-icon>Dashboard
-        </button>
+      <mat-list-item routerLink="/home/dashboard-tab" routerLinkActive="active">
+          <mat-icon>space_dashboard</mat-icon>
+          <span>Dashboard</span>
       </mat-list-item>
-      <mat-list-item>
-        <button mat-button routerLink="/home/table-tab" routerLinkActive="active">
-          <mat-icon>table</mat-icon>Table
-        </button>
+      <mat-list-item routerLink="/home/table-tab" routerLinkActive="active">
+          <mat-icon>table_view</mat-icon>
+          <span>Table</span>
       </mat-list-item>
-      <mat-list-item>
-        <button mat-button routerLink="/home/report-tab" routerLinkActive="active" >
-          <mat-icon>contacts</mat-icon>Report
-        </button>
+      <mat-list-item routerLink="/home/report-tab" routerLinkActive="active">
+          <mat-icon>summarize</mat-icon>
+          <span>Report</span>
       </mat-list-item>
-      <mat-list-item>
-        <button mat-button routerLink="/home/log-tab" routerLinkActive="active">
-          <mat-icon>settings</mat-icon>Log
-        </button>
+      <mat-list-item routerLink="/home/log-tab" routerLinkActive="active">
+          <mat-icon>settings</mat-icon>
+          <span>Logs</span>
       </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
