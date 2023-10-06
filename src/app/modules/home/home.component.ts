@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { AuthService } from '../../core/service/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from '../../shared/components/confirmation-dialog/confirmation-dialog.component';
@@ -9,13 +9,13 @@ import { ConfirmationDialogComponent } from '../../shared/components/confirmatio
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
+  
   activeTab: string = 'dashboard-tab';
   title: string = 'Menu';
   constructor(
     private router: Router,
     private authService: AuthService,
     private dialog: MatDialog,
-    private activatedRoute: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {

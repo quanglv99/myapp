@@ -8,7 +8,7 @@ body {
 
 mat-sidenav-container
 {
-  height: calc( 206vh - 115vh )
+  height: 100%;
 }
 mat-sidenav
 {

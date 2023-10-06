@@ -27,6 +27,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { LayoutModule } from '@angular/cdk/layout';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { MatOptionModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     MatMenuModule,
     LayoutModule,
     NgApexchartsModule,
+    MatOptionModule
   ]
 })
 export class HomeModule { }

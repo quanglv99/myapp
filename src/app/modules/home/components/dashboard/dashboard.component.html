@@ -1,6 +1,7 @@
 <div class="chartContainer">
   <div class="pie-chart">
     <div id="donut-chart">
+      <h2 id="donut-title">Chart Target Template</h2>
       <apx-chart
         [chart]="donutChartOption.chart!"
         [series]="donutChartOption.series!"
@@ -29,5 +30,31 @@
   </div>
 </div>
 <div class="chartContainer">
-  <div class="pie-chart"></div>
+  <div class="main-chart">
+    <div id="pie">
+      <h2 id="chart-title">Live Realtime From: 10.125.10.52</h2>
+      <apx-chart [chart]="donutChartOption2.chart!"
+      [series]="donutChartOption2.series!"
+      [labels]="donutChartOption2.labels!"
+      [legend]="donutChartOption2.legend!"
+      [responsive]="donutChartOption2.responsive!"
+      [colors]="donutChartOption2.colors!"
+      [plotOptions]="donutChartOption2.plotOptions!">
+      </apx-chart>
+    </div>
+  </div>
+  <div class="line-chart">
+    <div id="chart">
+      <apx-chart
+        [series]="chartOptions.series!"
+        [chart]="chartOptions.chart!"
+        [xaxis]="chartOptions.xaxis!"
+        [dataLabels]="chartOptions.dataLabels!"
+        [grid]="chartOptions.grid!"
+        [stroke]="chartOptions.stroke!"
+        [title]="chartOptions.title!"
+        [responsive]="chartOptions.responsive!"
+      ></apx-chart>
+    </div>
+  </div>
 </div>

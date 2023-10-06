@@ -14,6 +14,7 @@
             #inputUsername
             formControlName="username"
             type="text"
+            autocomplete="new-username"
             matInput
           />
         </mat-form-field>
@@ -26,6 +27,7 @@
             formControlName="password"
             matInput
             [type]="hide ? 'password' : 'text'"
+            autocomplete="new-password"
             (keydown.enter)="onSubmit()"
           >
           <button

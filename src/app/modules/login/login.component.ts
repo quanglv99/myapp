@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IUser } from '../../data/models/user.interface';
@@ -10,7 +10,7 @@ import { ConfirmationDialogComponent } from '../../shared/components/confirmatio
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   @ViewChild('inputUsername', { static: true })
   inputUsername!: ElementRef<HTMLInputElement>;
   hide: boolean = true;
@@ -19,13 +19,16 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private dialog:MatDialog
+    private dialog: MatDialog
   ) {}
+  ngOnDestroy(): void {
+    this.loginForm.reset();
+  }
   loginForm!: FormGroup;
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
+      username: ['',],
+      password: [''],
       rememberMe: false,
     });
     const rememberUsername = localStorage.getItem('rememberUsername');
@@ -40,36 +43,37 @@ export class LoginComponent implements OnInit {
     if (!this.loginForm.value.rememberMe) {
       this.inputUsername.nativeElement.focus();
     }
-
   }
-
   togglePasswordVisibility() {
     this.hide = !this.hide;
   }
 
+  
+
   onSubmit() {
     if (this.loginForm.valid) {
-      const username = this.loginForm.value.username;
-      const password = this.loginForm.value.password;
-      const rememberMe = this.loginForm.value.rememberMe;
-      if (this.authService.login(username, password)) 
-      {
-        if (rememberMe) {
-          localStorage.setItem('rememberUsername', username);
-          localStorage.setItem('rememberPassword', password);
-        } else {
-          localStorage.removeItem('rememberUsername');
-          localStorage.removeItem('rememberPassword');
+      const username = this.loginForm.get('username')!.value;
+      const password = this.loginForm.get('password')!.value;
+      const remember = this.loginForm.get('rememberMe')!.value;
+      this.authService.login(username, password,remember).subscribe(
+        (response) => {
+          if (response.status === 1) {
+            localStorage.setItem('currentToken', response.token);
+            this.router.navigate(['/home']);
+          } else {
+            const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+              width: '300px',
+              data: {
+                message: 'invalid username or password!',
+                showYesNo: false,
+              },
+            });
+          }
+        },
+        (error) => {
+          console.error('Login error', error);
         }
-        this.router.navigate(['/home']);
-      }else
-      {
-        const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
-          width: '300px',
-          data: { message: 'invalid username or password!',
-                  showYesNo: false }
-        });
-      }
+      );
     }
   }
 }

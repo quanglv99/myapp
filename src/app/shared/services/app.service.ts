@@ -7,17 +7,23 @@ export class AppConfigService {
   private appConfig: any;
   constructor(private http: HttpClient) {}
 
-  loadConfig() {
+  loadConfig(){
     return this.http
-      .get('/assets/config.json')
-      .toPromise()
-      .then((data) => {
-        this.appConfig = data;
-      });
+          .get('assets/appconfig.json')
+          .toPromise()
+          .then((data) => {
+            this.appConfig = data;
+          })
   }
-  getUrl():string{
-    return this.appConfig.API_URL
+
+  getLoginApi():string{
+    return this.appConfig.LOGIN
   }
+
+  getDeviceApi():string{
+    return this.appConfig.LIST_DEVICE
+  }
+
   getHomeUrl():string{
     return this.appConfig.HOME_URL
   }

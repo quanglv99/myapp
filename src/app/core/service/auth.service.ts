@@ -1,50 +1,99 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AppConfigService } from '../../shared/services/app.service';
-import { IUser } from '../../data/models/user.interface';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private isAuthenticated = false;
-  private data: IUser[] = [];
+  private token = '';
 
-  constructor(private http: HttpClient, private appConfig: AppConfigService) {
-    this.loadData();
+  constructor(
+    private http: HttpClient,
+    private appConfig: AppConfigService,
+    private dialog: MatDialog
+  ) {
+    const token = localStorage.getItem('currentToken');
+    this.isAuthenticated = !!token;
   }
 
-  private loadData() {
-    const apiUrl = this.appConfig.getUrl();
-    this.http.get(apiUrl).subscribe(
-      (userData: any) => {
-        this.data = userData;
-      },
-      (error) => {
-        console.log(error);
-      }
+  login(
+    username: string,
+    password: string,
+    rememberMe: boolean
+  ): Observable<any> {
+    const url = this.appConfig.getLoginApi();
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+
+    const body = {
+      username: username,
+      password: password,
+    };
+
+    // Make the HTTP POST request
+    return this.http.post(url, JSON.stringify(body), { headers: headers }).pipe(
+      // Handle the response
+      tap(
+        (response: any) => {
+          if (response.status === 1) {
+            this.setAuthenticated(true);
+            this.token = response.token;
+            if (rememberMe) {
+              localStorage.setItem('rememberUsername', username);
+              localStorage.setItem('rememberPassword', password);
+            } else {
+              localStorage.removeItem('rememberUsername');
+              localStorage.removeItem('rememberPassword');
+            }
+          }
+        },
+        (error) => {
+          const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+            width: '300px',
+            data: { message: 'Server unreachable!', showYesNo: false },
+          });
+        }
+      )
     );
   }
 
-  login(username: string, password: string): boolean {
-    const isExistUser = this.data.find(
-      (user) => user.username == username && user.password == password
-    );
-    if (isExistUser) {
-      this.isAuthenticated = true;
-      return true;
-    }
-    return false;
+  getDevice(token: string, module_id: string): Observable<any> {
+    const url = this.appConfig.getDeviceApi();
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+
+    const body = {
+      token: token,
+      module_id: module_id,
+    };
+    return this.http.post(url, JSON.stringify(body), { headers: headers });
   }
 
   logout() {
-    this.isAuthenticated = false;
+    localStorage.removeItem('currentToken')
+    this.setAuthenticated(false); 
   }
 
   getIsAuthenticated(): boolean {
     return this.isAuthenticated;
   }
+
+  setAuthenticated(value: boolean) {
+    this.isAuthenticated = value;
+  }
   isRememberedMe(): boolean {
     return localStorage.getItem('rememberUsername') !== null;
+  }
+
+  getToken(): string {
+    return this.token;
   }
 }
